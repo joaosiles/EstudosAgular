@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { forkJoin, map, switchMap } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class PokemonService {
-  private apiUrl: string = ' https://pokeapi.co/api/v2/pokemon/ditto';
-  constructor( private http: HttpClient ) { }
+  private apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=10&offset=0';
 
-  buscarPokemon(): Observable<any> {
-    return this.http.get(this.apiUrl)
+  constructor(private http: HttpClient) {}
+
+  getPokemonsCompletos() {
+    return this.http.get<any>(this.apiUrl).pipe(
+      switchMap(response => {
+        const detalhesRequisicoes = response.results.map((pokemon: any) =>
+          this.http.get(pokemon.url)
+        );
+        return forkJoin(detalhesRequisicoes);
+      })
+    );
   }
 }

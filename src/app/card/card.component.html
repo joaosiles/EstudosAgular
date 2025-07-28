@@ -1,6 +1,11 @@
-<h2>Pokémon: {{ pokemon?.name |  titlecase}}</h2>
+<div class="card">
+  <h2>{{ pokemon.name | titlecase }}</h2>
+  <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" />
 
-<p *ngIf="pokemon">Altura: {{ pokemon.height }}</p>
-<p *ngIf="pokemon">Peso: {{ pokemon.weight }}</p>
-
-<img *ngIf="pokemon?.sprites" [src]="pokemon.sprites.front_default" [alt]="pokemon.name">
+  <p><strong>Tipos:</strong></p>
+  <ul>
+    <li *ngFor="let tipo of pokemon.types">
+      {{ tipo.type.name }}
+    </li>
+  </ul>
+</div>

@@ -1,1 +1,7 @@
-<app-card></app-card>
+<h1>Pokedex</h1>
+
+<div class="cards">
+  <app-card *ngFor="let poke of pokemons" [pokemon]="poke"></app-card>
+</div>
+
+

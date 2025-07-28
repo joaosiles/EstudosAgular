@@ -1,21 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { PokemonService } from "../services/pokemon.service";
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
-  pokemon: any;
-
-  constructor( private pokemonService: PokemonService ) { }
-
-  ngOnInit(): void {
-    this.pokemonService.buscarPokemon().subscribe((res) => {
-      this.pokemon = res;
-      console.log(this.pokemon);
-    });
-  }
-
+export class CardComponent {
+  @Input() pokemon: any;
 }

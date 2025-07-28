@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PokemonService} from "./services/pokemon.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'meu-projeto-angular14';
+  title = 'Pokedex';
+  pokemons: any[] = [];
+
+  constructor(private pokemonService: PokemonService) { }
+
+  ngOnInit(): void {
+    this.pokemonService.getPokemonsCompletos().subscribe((res: any) => {
+      this.pokemons = res;
+    });
+  }
 }
