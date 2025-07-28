@@ -9,12 +9,35 @@ import { PokemonService} from "./services/pokemon.service";
 export class AppComponent {
   title = 'Pokedex';
   pokemons: any[] = [];
+  currentPage: number = 0;
+  limit: number = 10;
 
   constructor(private pokemonService: PokemonService) { }
 
+  // ngOnInit(): void {
+  //   this.pokemonService.getPokemonsCompletos().subscribe((res: any) => {
+  //     this.pokemons = res;
+  //   });
+  // }
+
   ngOnInit(): void {
-    this.pokemonService.getPokemonsCompletos().subscribe((res: any) => {
+    this.loadPokemons();
+  }
+
+  loadPokemons():void {
+    const offset = this.currentPage * this.limit;
+    this.pokemonService.getPokemonsCompletos(this.limit, offset).subscribe((res: any) => {
       this.pokemons = res;
-    });
+    })
+  }
+
+  nextPage(): void {
+    this.currentPage++;
+    this.loadPokemons();
+  }
+
+  previousPage(): void {
+    this.currentPage--;
+    this.loadPokemons();
   }
 }

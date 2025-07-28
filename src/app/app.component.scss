@@ -1,6 +1,25 @@
+img {
+  width: 50%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
 div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+
+  button:first-of-type {
+    background-color: #FF0;
+    color: #00F;
+    border: 1px solid #00F;
+  }
+
+  button:last-of-type {
+    background-color: #00F;
+    color: #FF0;
+    border: 1px solid #FF0;
+  }
 }

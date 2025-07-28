@@ -1,7 +1,12 @@
-<h1>Pokedex</h1>
+<img src="../assets/logodex.png">
 
 <div class="cards">
   <app-card *ngFor="let poke of pokemons" [pokemon]="poke"></app-card>
+</div>
+
+<div class="pagination">
+  <button (click)="previousPage()" [disabled]="currentPage === 0">Anterior</button>
+  <button (click)="nextPage()">Próximo</button>
 </div>
 
 
