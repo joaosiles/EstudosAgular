@@ -1,11 +1,11 @@
 <div class="card">
-  <h2>{{ pokemon.name | titlecase }}</h2>
+  <h3>{{ pokemon.name | titlecase }}</h3>
   <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" />
 
-  <p><strong>Tipos:</strong></p>
+  <p>Tipos:</p>
   <ul>
     <li *ngFor="let tipo of pokemon.types">
-      {{ tipo.type.name }}
+      {{ tipo.type.name | titlecase}}
     </li>
   </ul>
 </div>

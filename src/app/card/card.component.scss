@@ -1,0 +1,23 @@
+.card {
+  margin: 5px;
+  padding: 5px;
+  height: 250px;
+  background-color: #F5F5F5;
+  border-radius: 10px;
+  flex: 1 1 calc(25% - 40px);
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    p {
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    li {
+      font-size: 0.8rem;
+    }
+
+}
